@@ -1,0 +1,4 @@
+module Mcore
+  class ApplicationJob < ActiveJob::Base
+  end
+end

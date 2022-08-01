@@ -1,0 +1,37 @@
+.bundle/
+log/*.log
+pkg/
+test/dummy/log/*.log
+test/dummy/config/database.yml
+test/dummy/.sass-cache
+test/dummy/storage/*
+test/dummy/node_modules
+!test/dummy/storage/.keep
+test/dummy/config/master.key
+test/dummy/public/uploads/
+
+spec/support/uploads
+
+tags
+tags/*
+/.tags*
+test/dummy/public/system
+doc/yard/
+.yardoc
+test/dummy/dump.rdb
+test/dummy/logfile
+
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp
+/test/dummy/tmp
+.DS_Store
+.env
+/config/database.yml
+/public/uploads
+/coverage
+.byebug_history
+
+# RubyMine
+.idea/
