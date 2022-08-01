@@ -1,0 +1,20 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.7.3
+  NewCops: enable
+  Include:
+    - '**/*.gemspec'
+    - '**/Gemfile'
+    - 'config/routes.rb'
+    - 'spec/**/*.rb'
+  Exclude:
+    - '**/schema.rb'
+    - 'bin/**/*'
+    - 'vendor/**/*'
+    - 'tmp/*'
+
+Style/Documentation:
+  Enabled: false
