@@ -1,6 +1,7 @@
 module Mcore
   class UsersController < ApplicationController
     before_action :set_user, only: %i[ show edit update destroy ]
+    decorates_assigned :user
 
     # GET /users
     def index
