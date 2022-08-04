@@ -2,6 +2,8 @@ module Mcore
   class Post < ApplicationRecord
     self.table_name = 'posts'
 
+    include Concerns::JsonBuilder::Post
+
     belongs_to :user
 
     # TODO: messages should inform what is the min/max number

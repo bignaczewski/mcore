@@ -27,11 +27,14 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_dependency 'rails', '>= 7.0.3.1'
+  spec.add_dependency 'jbuilder'
+
   spec.add_development_dependency 'better_errors'
   spec.add_development_dependency 'binding_of_caller'
   spec.add_development_dependency 'byebug'
   spec.add_development_dependency 'database_cleaner-active_record'
   spec.add_development_dependency 'factory_bot_rails'
+  spec.add_development_dependency 'rspec-openapi'
   spec.add_development_dependency 'rspec-rails'
   spec.add_development_dependency 'rubocop-rails'
   spec.add_development_dependency 'rubocop-rspec'

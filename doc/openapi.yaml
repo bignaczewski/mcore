@@ -1,0 +1,295 @@
+---
+openapi: 3.0.3
+info:
+  title: mcore
+  version: 1.0.0
+servers: []
+paths:
+  "/users/{user_id}/posts":
+    get:
+      summary: index
+      tags:
+      - Mcore::Post
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 1
+      responses:
+        '200':
+          description: renders a successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    body:
+                      type: string
+                    user_id:
+                      type: integer
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+              example:
+              - id: 1
+                title: Title
+                body: Body
+                user_id: 1
+                created_at: '2022-08-04T05:38:10.067Z'
+                updated_at: '2022-08-04T05:38:10.067Z'
+    post:
+      summary: create
+      tags:
+      - Mcore::Post
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 4
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                post:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    body:
+                      type: string
+                    user_id:
+                      type: string
+            example:
+              post:
+                title: Title
+                body: Body
+                user_id: '4'
+      responses:
+        '302':
+          description: redirects to the created post
+          content:
+            text/html:
+              schema:
+                type: string
+              example: <html><body>You are being <a href="http://www.example.com/users/4/posts/4">redirected</a>.</body></html>
+  "/users/{user_id}/posts/{id}":
+    get:
+      summary: show
+      tags:
+      - Mcore::Post
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 2
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 2
+      responses:
+        '200':
+          description: renders a successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      title:
+                        type: string
+                      body:
+                        type: string
+                      user_id:
+                        type: integer
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+              example:
+                user:
+                  id: 2
+                  title: Title
+                  body: Body
+                  user_id: 2
+                  created_at: '2022-08-04T05:38:10.103Z'
+                  updated_at: '2022-08-04T05:38:10.103Z'
+    delete:
+      summary: destroy
+      tags:
+      - Mcore::Post
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 11
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 9
+      responses:
+        '302':
+          description: redirects to the posts list
+          content:
+            text/html:
+              schema:
+                type: string
+              example: <html><body>You are being <a href="http://www.example.com/users/11/posts">redirected</a>.</body></html>
+  "/users":
+    get:
+      summary: index
+      tags:
+      - Mcore::User
+      responses:
+        '200':
+          description: renders a successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    first_name:
+                      type: string
+                    last_name:
+                      type: string
+                    email:
+                      type: string
+                    address:
+                      nullable: true
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+              example:
+              - id: 12
+                first_name: Bartosz
+                last_name: Ignaczewski
+                email: bartosz.p.ignaczewski@gmail.com
+                address:
+                created_at: '2022-08-04T05:38:10.155Z'
+                updated_at: '2022-08-04T05:38:10.155Z'
+    post:
+      summary: create
+      tags:
+      - Mcore::User
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    first_name:
+                      type: string
+                    last_name:
+                      type: string
+                    email:
+                      type: string
+            example:
+              user:
+                first_name: Bartosz
+                last_name: Ignaczewski
+                email: bartosz.p.ignaczewski@gmail.com
+      responses:
+        '302':
+          description: redirects to the created user
+          content:
+            text/html:
+              schema:
+                type: string
+              example: <html><body>You are being <a href="http://www.example.com/users/15">redirected</a>.</body></html>
+  "/users/{id}":
+    get:
+      summary: show
+      tags:
+      - Mcore::User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 13
+      responses:
+        '200':
+          description: renders a successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      email:
+                        type: string
+                      address:
+                        nullable: true
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+              example:
+                user:
+                  id: 13
+                  first_name: Bartosz
+                  last_name: Ignaczewski
+                  email: bartosz.p.ignaczewski@gmail.com
+                  address:
+                  created_at: '2022-08-04T05:38:10.159Z'
+                  updated_at: '2022-08-04T05:38:10.159Z'
+    delete:
+      summary: destroy
+      tags:
+      - Mcore::User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 20
+      responses:
+        '302':
+          description: redirects to the users list
+          content:
+            text/html:
+              schema:
+                type: string
+              example: <html><body>You are being <a href="http://www.example.com/users">redirected</a>.</body></html>

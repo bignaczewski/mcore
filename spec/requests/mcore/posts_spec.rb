@@ -43,14 +43,14 @@ module Mcore
       end
     end
 
-    describe 'GET /new' do
+    describe 'GET /new', openapi: false do
       it 'renders a successful response' do
-        get new_user_post_url(user)
+        get new_user_post_url(user)#, headers: { 'Content-Type' => 'application/html' } # 'application/x-www-form-urlencoded'
         expect(response).to be_successful
       end
     end
 
-    describe 'GET /edit' do
+    describe 'GET /edit', openapi: false do
       it 'renders a successful response' do
         post = Post.create! valid_attributes
         get edit_user_post_url(user, post)

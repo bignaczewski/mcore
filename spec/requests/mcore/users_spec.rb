@@ -30,7 +30,7 @@ module Mcore
     describe 'GET /index' do
       it 'renders a successful response' do
         User.create! valid_attributes
-        get users_url
+        get users_url, headers{ 'content-type': 'aj' }
         expect(response).to be_successful
       end
     end
@@ -38,19 +38,27 @@ module Mcore
     describe 'GET /show' do
       it 'renders a successful response' do
         user = User.create! valid_attributes
-        get user_url(user)
+        get user_url(user), headers{ 'content-type': 'aj' }
         expect(response).to be_successful
       end
     end
 
-    describe 'GET /new' do
+    describe 'GET /show' do
+      it 'renders a successful response' do
+        user = User.create! valid_attributes
+        get user_url(user), headers{ 'content-type': 'html' }
+        expect(response).to be_successful
+      end
+    end
+
+    describe 'GET /new', openapi: false do
       it 'renders a successful response' do
         get new_user_url
         expect(response).to be_successful
       end
     end
 
-    describe 'GET /edit' do
+    describe 'GET /edit', openapi: false do
       it 'renders a successful response' do
         user = User.create! valid_attributes
         get edit_user_url(user)

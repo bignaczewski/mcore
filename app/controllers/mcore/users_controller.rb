@@ -25,11 +25,26 @@ module Mcore
       @user = User.new(user_params)
 
       if @user.save
-        redirect_to @user, notice: "User was successfully created."
+        # if format is html; redirect_to @user, notice: "User was successfully created."
+        # if format is json; render json @user, status: :ok
       else
         render :new, status: :unprocessable_entity
+        # if format is html; render :new, status: :unprocessable_entity
+        # if format is json;, status: :error
       end
     end
+
+    # @api
+    # users#create
+    # def
+    #   render @UserService.new(params).call, status: :error
+    # end
+    #
+    # @html
+    # users#create
+    # def
+    #   ender @UserService.new(params).call, status: :error
+    # end
 
     # PATCH/PUT /users/1
     def update

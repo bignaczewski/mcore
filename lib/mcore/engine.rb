@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'jbuilder'
+
 module Mcore
   class Engine < ::Rails::Engine
     isolate_namespace Mcore

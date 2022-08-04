@@ -12,6 +12,7 @@ require 'factory_bot_rails'
 require 'database_cleaner-active_record'
 require 'byebug'
 require 'shoulda-matchers'
+require 'rspec/openapi'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
