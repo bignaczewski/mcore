@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'draper'
+
 module Mcore
   class Engine < ::Rails::Engine
     isolate_namespace Mcore

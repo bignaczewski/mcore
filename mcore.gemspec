@@ -26,7 +26,9 @@ Gem::Specification.new do |spec|
     Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
   end
 
+  spec.add_dependency 'draper', '~> 4.0.0'
   spec.add_dependency 'rails', '>= 7.0.3.1'
+
   spec.add_development_dependency 'better_errors'
   spec.add_development_dependency 'binding_of_caller'
   spec.add_development_dependency 'byebug'

@@ -70,5 +70,7 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  config.include ActiveSupport::Testing::TimeHelpers
+
   Dir[Mcore::Engine.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 end
