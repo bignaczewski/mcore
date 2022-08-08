@@ -3,6 +3,7 @@ PATH
   specs:
     mcore (0.1.0)
       draper (~> 4.0.0)
+      interactor (~> 3.0)
       rails (>= 7.0.3.1)
 
 GEM
@@ -77,6 +78,8 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
     better_errors (2.9.1)
       coderay (>= 1.0.0)
@@ -113,7 +116,12 @@ GEM
       activesupport (>= 5.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
+    interactor (3.1.2)
     json (2.6.2)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.8.1)
+      launchy (>= 2.2, < 3)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -146,6 +154,7 @@ GEM
     parser (3.1.2.0)
       ast (~> 2.4.1)
     pg (1.4.2)
+    public_suffix (4.0.7)
     racc (1.6.0)
     rack (2.2.4)
     rack-test (2.0.2)
@@ -248,6 +257,7 @@ DEPENDENCIES
   byebug
   database_cleaner-active_record
   factory_bot_rails
+  letter_opener
   mcore!
   pg
   rspec-rails

@@ -23,11 +23,13 @@ module Mcore
 
     # POST /posts
     def create
-      @post = @user.posts.new(post_params)
+      result = Mcore::Organizers::CreatePost.call(post_params: post_params, user: @user)
 
-      if @post.save
-        redirect_to [@user, @post], notice: "Post was successfully created."
+      if result.success?
+        redirect_to [@user, result.post], notice: "Post was successfully created."
       else
+        @post = result.post
+        logger.error("🦒 #{result.message} 🦒")
         render :new, status: :unprocessable_entity
       end
     end

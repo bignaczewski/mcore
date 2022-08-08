@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'draper'
+require 'interactor'
 
 module Mcore
   class Engine < ::Rails::Engine
