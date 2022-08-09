@@ -88,15 +88,14 @@ module Mcore
 
     describe 'PATCH /update' do
       context 'with valid parameters' do
-        let(:new_attributes) do
-          skip('Add a hash of attributes valid for your model')
-        end
+        let(:new_title) { 'New title' }
+        let(:new_attributes) { valid_attributes.merge({ title: new_title }) }
 
         it 'updates the requested post' do
           post = Post.create! valid_attributes
           patch user_post_url(user, post), params: { post: new_attributes }
           post.reload
-          skip('Add assertions for updated state')
+          expect(post.title).to eq new_title
         end
 
         it 'redirects to the post' do
