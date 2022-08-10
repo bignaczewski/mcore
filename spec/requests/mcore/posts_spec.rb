@@ -59,13 +59,14 @@ module Mcore
     end
 
     describe 'POST /create' do
-      context 'with valid parameters' do
-        it 'creates a new Post' do
-          expect do
-            post user_posts_url(user), params: { post: valid_attributes }
-          end.to change(Post, :count).by(1)
-        end
+      let(:post_params) { { 'title' => 'Title', 'body' => 'Body' } }
 
+      it 'calls an interactor organizer' do
+        expect(Mcore::Organizers::CreatePost).to receive(:call).with(post_params: post_params, user: user).and_call_original
+        post user_posts_url(user), params: { post: valid_attributes }
+      end
+
+      context 'with valid parameters' do
         it 'redirects to the created post' do
           post user_posts_url(user), params: { post: valid_attributes }
           expect(response).to redirect_to(user_post_url(user, Post.last))
@@ -73,12 +74,6 @@ module Mcore
       end
 
       context 'with invalid parameters' do
-        it 'does not create a new Post' do
-          expect do
-            post user_posts_url(user), params: { post: invalid_attributes }
-          end.not_to change(Post, :count)
-        end
-
         it "renders a successful response (i.e. to display the 'new' template)" do
           post user_posts_url(user), params: { post: invalid_attributes }
           expect(response).to have_http_status(:unprocessable_entity)
