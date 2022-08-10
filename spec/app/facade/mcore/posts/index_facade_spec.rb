@@ -80,5 +80,28 @@ RSpec.describe Mcore::Posts::IndexFacade do
         expect(index_facade.posts_filtered_by_title.posts.first.title).to eq title
       end
     end
+
+    describe '#two_titles_from_different_user' do
+      subject(:index_facade) do
+        described_class.new(
+          user: user2,
+          params: params
+        )
+      end
+      let(:params) { { title: title } }
+      let(:title) { 'TestTitle' }
+      let(:user) { create(:user) }
+      let(:user2) { create(:user) }
+
+
+      before do
+        create(:post, user: user, title: title)
+        create(:post, user: user2, title: title)
+      end
+
+      it 'returns one by user and title' do
+        expect(index_facade.posts_filtered_by_user.posts_filtered_by_title.posts.size).to eq 1
+      end
+    end
   end
 end

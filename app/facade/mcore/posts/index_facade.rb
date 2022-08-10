@@ -14,8 +14,6 @@ module Mcore
       def posts_filtered_by_user
         return self if @user.blank?
 
-        return self if with_user.blank? || with_user != 'true'
-
         @posts = @posts.includes(:user).where(user: @user)
         self
       end
