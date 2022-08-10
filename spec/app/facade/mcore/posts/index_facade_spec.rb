@@ -80,6 +80,7 @@ RSpec.describe Mcore::Posts::IndexFacade do
         expect(index_facade.posts_filtered_by_title.posts.first.title).to eq title
       end
     end
+<<<<<<< HEAD
 
     describe '#two_titles_from_different_user' do
       subject(:index_facade) do
@@ -103,5 +104,7 @@ RSpec.describe Mcore::Posts::IndexFacade do
         expect(index_facade.posts_filtered_by_user.posts_filtered_by_title.posts.size).to eq 1
       end
     end
+=======
+>>>>>>> ba63ade1778d350f31bf01a7b7fc657c23892c41
   end
 end
